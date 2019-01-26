@@ -79,8 +79,6 @@ def test():
             hdhomerun_device_get_version(device, ctypes.byref(version_str), version_num)
             print ('        fwversion:  %s' % (version_str.value.decode('UTF-8')))
             location_str = ctypes.c_char_p()
-            hdhomerun_device_get_lineup_location(device, ctypes.byref(location_str))
-            print ('        lineup:     %s' % (location_str.value).decode('UTF-8'))
             features = ctypes.c_char_p()
             hdhomerun_device_get_supported(device, None, ctypes.byref(features))
             print ('        features:   %s' % (features.value.decode('UTF-8').rstrip('\r\n').replace('\n', '; ')))
