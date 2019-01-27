@@ -244,15 +244,16 @@ class hdhomerun_discover_device_t(ctypes.Structure):
 
 # Define function prototypes...
 __prototypes = (
-    # https://github.com/Silicondust/libhdhomerun/blob/master/hdhomerun_device.h
-    # extern LIBHDHOMERUN_API struct hdhomerun_device_t 
-    #     *hdhomerun_device_create(
-    #         uint32_t device_id,
-    #         uint32_t device_ip,
-    #         unsigned int tuner,
-    #         struct hdhomerun_debug_t *dbg
-    #     );
     (
+        '''https://github.com/Silicondust/libhdhomerun/blob/master/hdhomerun_device.h
+
+        extern LIBHDHOMERUN_API struct hdhomerun_device_t
+            *hdhomerun_device_create(
+                uint32_t device_id,
+                uint32_t device_ip,
+                unsigned int tuner,
+                struct hdhomerun_debug_t *dbg
+            );''',
         'hdhomerun_device_create',
         ctypes.POINTER(hdhomerun_device_t),
         (
@@ -263,15 +264,16 @@ __prototypes = (
         )
     ),
 
-    # https://github.com/Silicondust/libhdhomerun/blob/master/hdhomerun_device.h
-    # extern LIBHDHOMERUN_API struct hdhomerun_device_t 
-    #     *hdhomerun_device_create_from_str(
-    #         uint32_t device_id,
-    #         uint32_t device_ip,
-    #         unsigned int tuner,
-    #         struct hdhomerun_debug_t *dbg
-    #     );
     (
+        '''https://github.com/Silicondust/libhdhomerun/blob/master/hdhomerun_device.h
+
+        extern LIBHDHOMERUN_API struct hdhomerun_device_t 
+            *hdhomerun_device_create_from_str(
+                uint32_t device_id,
+                uint32_t device_ip,
+                unsigned int tuner,
+                struct hdhomerun_debug_t *dbg
+            );''',
         'hdhomerun_device_create_from_str',
         ctypes.POINTER(hdhomerun_device_t),
         (
@@ -280,12 +282,13 @@ __prototypes = (
         )
     ),
 
-    # https://github.com/Silicondust/libhdhomerun/blob/master/hdhomerun_device.h
-    # extern LIBHDHOMERUN_API void
-    #     hdhomerun_device_destroy(
-    #         struct hdhomerun_device_t *hd
-    #     );
     (
+        '''https://github.com/Silicondust/libhdhomerun/blob/master/hdhomerun_device.h
+
+        extern LIBHDHOMERUN_API void
+            hdhomerun_device_destroy(
+                struct hdhomerun_device_t *hd
+            );''',
         'hdhomerun_device_destroy',
         ctypes.c_void_p,
         (
@@ -293,12 +296,13 @@ __prototypes = (
         )
     ),
 
-    # https://github.com/Silicondust/libhdhomerun/blob/master/hdhomerun_discover.h
-    # extern LIBHDHOMERUN_API void
-    #     hdhomerun_discover_destroy(
-    #         struct hdhomerun_discover_t *ds
-    #     );
     (
+        '''https://github.com/Silicondust/libhdhomerun/blob/master/hdhomerun_discover.h
+
+        extern LIBHDHOMERUN_API void
+            hdhomerun_discover_destroy(
+                struct hdhomerun_discover_t *ds
+            );''',
         'hdhomerun_discover_destroy',
         ctypes.c_void_p,
         (
@@ -306,16 +310,17 @@ __prototypes = (
         )
     ),
 
-    # https://github.com/Silicondust/libhdhomerun/blob/master/hdhomerun_discover.h
-    # extern LIBHDHOMERUN_API int
-    #     hdhomerun_discover_find_devices_custom_v2(
-    #         uint32_t target_ip,
-    #         uint32_t device_type,
-    #         uint32_t device_id,
-    #         struct hdhomerun_discover_device_t result_list[],
-    #         int max_count
-    #     );
     (
+        '''https://github.com/Silicondust/libhdhomerun/blob/master/hdhomerun_discover.h
+
+        extern LIBHDHOMERUN_API int
+            hdhomerun_discover_find_devices_custom_v2(
+                uint32_t target_ip,
+                uint32_t device_type,
+                uint32_t device_id,
+                struct hdhomerun_discover_device_t result_list[],
+                int max_count
+            );''',
         'hdhomerun_discover_find_devices_custom_v2',
         ctypes.c_int32,
         (
@@ -327,12 +332,13 @@ __prototypes = (
         )
     ),
 
-    # https://github.com/Silicondust/libhdhomerun/blob/master/hdhomerun_device.h
-    # extern LIBHDHOMERUN_API uint32_t
-    #     hdhomerun_device_get_device_id(
-    #         struct hdhomerun_device_t *hd
-    #     );
     (
+        '''https://github.com/Silicondust/libhdhomerun/blob/master/hdhomerun_device.h
+
+        extern LIBHDHOMERUN_API uint32_t
+            hdhomerun_device_get_device_id(
+                struct hdhomerun_device_t *hd
+            );''',
         'hdhomerun_device_get_device_id',
         ctypes.c_uint32,
         (
@@ -340,12 +346,13 @@ __prototypes = (
         )
     ),
 
-    # https://github.com/Silicondust/libhdhomerun/blob/master/hdhomerun_device.h
-    # extern LIBHDHOMERUN_API uint32_t
-    #     hdhomerun_device_get_device_ip(
-    #         struct hdhomerun_device_t *hd
-    #     );
     (
+        '''https://github.com/Silicondust/libhdhomerun/blob/master/hdhomerun_device.h
+
+        extern LIBHDHOMERUN_API uint32_t
+            hdhomerun_device_get_device_ip(
+                struct hdhomerun_device_t *hd
+            );''',
         'hdhomerun_device_get_device_ip',
         ctypes.c_uint32,
         (
@@ -353,12 +360,13 @@ __prototypes = (
         )
     ),
 
-    # https://github.com/Silicondust/libhdhomerun/blob/master/hdhomerun_device.h
-    # extern LIBHDHOMERUN_API const char *
-    #     hdhomerun_device_get_model_str(
-    #         struct hdhomerun_device_t *hd
-    #     );
     (
+        '''https://github.com/Silicondust/libhdhomerun/blob/master/hdhomerun_device.h
+
+        extern LIBHDHOMERUN_API const char *
+            hdhomerun_device_get_model_str(
+                struct hdhomerun_device_t *hd
+            );''',
         'hdhomerun_device_get_model_str',
         ctypes.c_char_p,
         (
@@ -402,12 +410,13 @@ if __libhdhomerun is None:
 # Convert prototypes into module functions...
 module = sys.modules[__name__]
 
-for name, restype, argtypes in __prototypes:
+for doc, name, restype, argtypes in __prototypes:
     try:
         func = getattr(__libhdhomerun, name)
     except AttributeError:
         raise AttributeError('libhdhomerun has no function: %s' % name)
 
+    func.__doc__ = doc
     func.restype = restype
     func.argtypes = argtypes
 
