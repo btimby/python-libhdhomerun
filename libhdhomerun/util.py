@@ -1,3 +1,19 @@
+import sys
+import re
+import logging
+import ctypes
+import xml.etree.cElementTree
+import collections
+import libhdhomerun
+
+# Require the six compatibility library if running older python
+if sys.version_info < (3,):
+    import six
+
+
+LOGGER = logging.getLogger(__name__)
+
+
 def ip_to_str(ip):
     return '%d.%d.%d.%d' % (
         (ip >> 24 & 0xff), (ip >> 16 & 0xff), (ip >> 8 & 0xff),
@@ -7,14 +23,6 @@ def ip_to_str(ip):
 def is_hdhomerun_prime(device, debug=False):
     "Returns True if the device is a HDHomeRun Prime"
     "Note: HDHomeRun Prime does not imply active CableCARD"
-
-    import sys
-    import re
-    import libhdhomerun
-
-    # Require the six compatibility library if running older python
-    if sys.version_info < (3,):
-        import six
 
     model_str = libhdhomerun.hdhomerun_device_get_model_str(device).decode('UTF-8')
     if debug:
@@ -27,15 +35,6 @@ def is_hdhomerun_prime(device, debug=False):
 def get_virtual_channels(device, debug=False):
     "Returns the CableCARD virtual channel list or an empty hash if error"
     "There is no API to get channel map, decodes the XML lineup"
-
-    import sys
-    import xml.etree.cElementTree
-    import collections
-    import libhdhomerun
-
-    # Require the six compatibility library if running older python
-    if sys.version_info < (3,):
-        import six
 
     if sys.version_info < (3,):
         import urllib2 as urllib
@@ -98,15 +97,6 @@ def get_virtual_channels(device, debug=False):
 def get_channels(device, debug=False):
     "Returns the channel list or an empty hash if error"
 
-    import sys
-    import ctypes
-    import collections
-    import libhdhomerun
-
-    # Require the six compatibility library if running older python
-    if sys.version_info < (3,):
-        import six
-
     channels = []
     channelTuple = collections.namedtuple('channelTuple', 'frequency program_number name type virtual_major virtual_minor')
 
@@ -151,5 +141,3 @@ def get_channels(device, debug=False):
         print ('Debug: getChannels: returning %i channels' % (len(channels)))
 
     return channels
-
-

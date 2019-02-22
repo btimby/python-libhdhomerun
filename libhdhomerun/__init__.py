@@ -253,7 +253,8 @@ __prototypes = (
                 uint32_t device_ip,
                 unsigned int tuner,
                 struct hdhomerun_debug_t *dbg
-            );''',
+            );
+        ''',
         'hdhomerun_device_create',
         ctypes.POINTER(hdhomerun_device_t),
         (
@@ -273,7 +274,8 @@ __prototypes = (
                 uint32_t device_ip,
                 unsigned int tuner,
                 struct hdhomerun_debug_t *dbg
-            );''',
+            );
+        ''',
         'hdhomerun_device_create_from_str',
         ctypes.POINTER(hdhomerun_device_t),
         (
@@ -288,7 +290,8 @@ __prototypes = (
         extern LIBHDHOMERUN_API void
             hdhomerun_device_destroy(
                 struct hdhomerun_device_t *hd
-            );''',
+            );
+        ''',
         'hdhomerun_device_destroy',
         ctypes.c_void_p,
         (
@@ -302,7 +305,8 @@ __prototypes = (
         extern LIBHDHOMERUN_API void
             hdhomerun_discover_destroy(
                 struct hdhomerun_discover_t *ds
-            );''',
+            );
+        ''',
         'hdhomerun_discover_destroy',
         ctypes.c_void_p,
         (
@@ -320,7 +324,8 @@ __prototypes = (
                 uint32_t device_id,
                 struct hdhomerun_discover_device_t result_list[],
                 int max_count
-            );''',
+            );
+        ''',
         'hdhomerun_discover_find_devices_custom_v2',
         ctypes.c_int32,
         (
@@ -338,7 +343,8 @@ __prototypes = (
         extern LIBHDHOMERUN_API uint32_t
             hdhomerun_device_get_device_id(
                 struct hdhomerun_device_t *hd
-            );''',
+            );
+        ''',
         'hdhomerun_device_get_device_id',
         ctypes.c_uint32,
         (
@@ -352,7 +358,8 @@ __prototypes = (
         extern LIBHDHOMERUN_API uint32_t
             hdhomerun_device_get_device_ip(
                 struct hdhomerun_device_t *hd
-            );''',
+            );
+        ''',
         'hdhomerun_device_get_device_ip',
         ctypes.c_uint32,
         (
@@ -366,7 +373,8 @@ __prototypes = (
         extern LIBHDHOMERUN_API const char *
             hdhomerun_device_get_model_str(
                 struct hdhomerun_device_t *hd
-            );''',
+            );
+        ''',
         'hdhomerun_device_get_model_str',
         ctypes.c_char_p,
         (
@@ -374,6 +382,109 @@ __prototypes = (
         )
     ),
 
+    (
+        '''
+        https://github.com/Silicondust/libhdhomerun/blob/master/hdhomerun_device.h
+
+        extern LIBHDHOMERUN_API int
+            hdhomerun_device_get_tuner_channelmap(
+                struct hdhomerun_device_t *hd,
+                char **pchannelmap
+            );
+        ''',
+        'hdhomerun_device_get_tuner_channelmap',
+        ctypes.c_int32,
+        (
+            ctypes.POINTER(hdhomerun_device_t),
+            ctypes.POINTER(ctypes.c_char_p),
+        ),
+    ),
+
+    (
+        '''
+        https://github.com/Silicondust/libhdhomerun/blob/master/hdhomerun_channels.h
+
+        extern LIBHDHOMERUN_API const char *
+            hdhomerun_channelmap_get_channelmap_scan_group(
+                const char *channelmap
+            );
+        ''',
+        'hdhomerun_channelmap_get_channelmap_scan_group',
+        ctypes.c_char_p,
+        (
+            ctypes.c_char_p,
+        ),
+    ),
+
+    (
+        '''
+        https://github.com/Silicondust/libhdhomerun/blob/master/hdhomerun_device.h
+
+        extern LIBHDHOMERUN_API int
+            hdhomerun_device_channelscan_init(
+                struct hdhomerun_device_t *hd,
+                const char *channelmap
+            );
+        ''',
+        'hdhomerun_device_channelscan_init',
+        ctypes.c_int32,
+        (
+            ctypes.POINTER(hdhomerun_device_t),
+            ctypes.c_char_p,
+        ),
+    ),
+
+    (
+        '''
+        https://github.com/Silicondust/libhdhomerun/blob/master/hdhomerun_device.h
+
+        extern LIBHDHOMERUN_API int
+            hdhomerun_device_channelscan_advance(
+                struct hdhomerun_device_t *hd,
+                struct hdhomerun_channelscan_result_t *result
+            );
+        ''',
+        'hdhomerun_device_channelscan_advance',
+        ctypes.c_int32,
+        (
+            ctypes.POINTER(hdhomerun_device_t),
+            ctypes.POINTER(hdhomerun_channelscan_result_t),
+        ),
+    ),
+
+    (
+        '''
+        https://github.com/Silicondust/libhdhomerun/blob/master/hdhomerun_device.h
+
+        extern LIBHDHOMERUN_API int
+            hdhomerun_device_channelscan_detect(
+                struct hdhomerun_device_t *hd,
+                struct hdhomerun_channelscan_result_t *result
+            );
+        ''',
+        'hdhomerun_device_channelscan_detect',
+        ctypes.c_int32,
+        (
+            ctypes.POINTER(hdhomerun_device_t),
+            ctypes.POINTER(hdhomerun_channelscan_result_t),
+        ),
+    ),
+
+    (
+        '''
+        https://github.com/Silicondust/libhdhomerun/blob/master/hdhomerun_device.h
+
+        extern LIBHDHOMERUN_API uint8_t
+            hdhomerun_device_channelscan_get_progress(
+                struct hdhomerun_device_t *hd
+            );
+        ''',
+        'hdhomerun_device_channelscan_get_progress',
+        ctypes.c_uint8,
+        (
+            ctypes.POINTER(hdhomerun_device_t),
+        ),
+    ),
 )
 
 # Due to platform/compiler differences, the shared library
