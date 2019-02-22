@@ -1,4 +1,6 @@
 import sys
+import struct
+import socket
 import re
 import logging
 import ctypes
@@ -14,10 +16,12 @@ if sys.version_info < (3,):
 LOGGER = logging.getLogger(__name__)
 
 
-def ip_to_str(ip):
-    return '%d.%d.%d.%d' % (
-        (ip >> 24 & 0xff), (ip >> 16 & 0xff), (ip >> 8 & 0xff),
-        (ip >> 0 & 0xff))
+def ip_to_str(addr):
+    return socket.inet_ntoa(struct.pack("!I", addr))
+
+
+def str_to_ip(addr):
+    return struct.unpack("!I", socket.inet_aton(addr))[0]
 
 
 def is_hdhomerun_prime(device, debug=False):
